@@ -1,4 +1,5 @@
 from manim import *
+import numpy as np
 
 class Rotations(Scene):
     def construct(self):
@@ -14,6 +15,23 @@ class Rotations(Scene):
         self.play(square.animate.rotate(PI / 2), run_time=1)
         self.play(square.animate.rotate(PI / 2), run_time=1)
         self.wait()
+
+class ManualRotation(Scene):
+    def construct(self):
+
+        circle = Circle(radius=3)
+        circle_radius = circle.radius
+
+        dot = Dot(color=GREEN)
+        dot.move_to(
+            circle.get_center() + circle_radius * np.array([
+                np.cos(PI / 4), # in radians
+                np.sin(PI / 4), # in radians
+                0
+            ])
+        )
+
+        self.add(circle, dot)
 
 class LineRotation(Scene):
     def construct(self):

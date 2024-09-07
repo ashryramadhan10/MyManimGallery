@@ -42,3 +42,50 @@ class AnimationTest(Scene):
             text[i].set_color(ManimColor.from_rgb((r, g, b)))
 
         return text
+    
+class IndicateExample(Scene):
+    def construct(self):
+        square = Square()
+        self.play(Create(square))
+        self.play(Indicate(square))
+        self.wait(2)
+
+class ApplyWaveExample(Scene):
+    def construct(self):
+        text = Text("Wave Effect")
+        self.play(Create(text))
+        self.play(ApplyWave(text))
+        self.wait(2)
+
+class ShrinkToCenterExample(Scene):
+    def construct(self):
+        square = Square()
+        self.play(Create(square))
+        self.play(ShrinkToCenter(square))
+        self.wait(2)
+
+class GrowFromCenterExample(Scene):
+    def construct(self):
+        square = Square()
+        self.play(GrowFromCenter(square))
+        self.wait(2)
+
+class WiggleExample(Scene):
+    def construct(self):
+        square = Square()
+        self.play(Create(square))
+        self.play(Wiggle(square))
+        self.wait(2)
+
+class ApplyFunctionExample(Scene):
+    def construct(self):
+        square = Square()
+
+        def custom_transformation(mobject):
+            mobject.rotate(PI/2)
+            mobject.shift(UP)
+            return mobject
+
+        self.play(Create(square))
+        self.play(ApplyFunction(custom_transformation, square))
+        self.wait(2)
